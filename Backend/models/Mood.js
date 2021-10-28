@@ -5,7 +5,7 @@ const mongoose = require('../db/connection');
 const MoodSchema = new mongoose.Schema({
     mood: String,
     date: { type: Date, default: Date.now },
-    user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+    Mooder: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
     
     
 

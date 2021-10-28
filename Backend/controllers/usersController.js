@@ -1,7 +1,5 @@
 const express = require('express');
-
 const router = express.Router();
-
 const User = require('../models/User');
 
 
@@ -26,9 +24,8 @@ router.get('/:id', async (req, res, next) => {
 
 router.post('/', async (req, res, next) => {
 	try {
-		
-		const newUser = await User.create(req.body);
-		res(newUser);
+		const user = await User.create(req.body);
+		res.status(201).json(user);
 	} catch (error) {
 		next(error);
 	}

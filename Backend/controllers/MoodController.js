@@ -9,7 +9,7 @@ const Mood = require('../models/Mood');
 router.get('/', async (req, res, next) => {
 	try {
 		const moods = await Mood.find().populate({
-			path: 'setmood'
+			path: 'Mooder'
 		});
 
 		res.json(moods);
@@ -22,7 +22,7 @@ router.get('/', async (req, res, next) => {
 router.get('/:id', async (req, res, next) => {
 	try {
 		const id = req.params.id;
-		const mood = await Mood.findById(id).populate("setmood");
+		const mood = await Mood.findById(id).populate("Mooder");
 		res.json(mood);
 	} catch (error) {
 
