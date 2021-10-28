@@ -31,10 +31,10 @@ app.use(cors());
 //===============================================================
 // Redirect
 app.get('/', (req, res) => {
-	res.redirect('/api/bookmarks');
+	res.redirect('/api/mood');
 });
 /* START CONTROLLERS HERE */ 
-const bookmarksController = require('./controllers/moodController')
+const moodController = require('./controllers/moodController')
 app.use('/api/mood', moodController);
 
 const usersController = require('./controllers/usersController')
@@ -54,5 +54,5 @@ res.status(statusCode).send(message)
 // START SERVER (tells our port to listen)
 // ============================================================
 app.listen(app.get('port'), () => {
-	console.log(`✅ PORT: ${app.get('port')} 🌟`);
+	console.log(`✅ PORT: ${app.get('port')} 🤘🏻`);
 });

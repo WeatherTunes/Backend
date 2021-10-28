@@ -5,12 +5,12 @@ const Mood = require('../models/Mood');
 
 
 
-
+// Get all
 router.get('/', async (req, res, next) => {
 	try {
 		const moods = await Mood.find().populate({
 			path: 'owner',
-			select: 'name',
+			select: 'user',
 		});
 
 		res.json(moods);
@@ -19,9 +19,9 @@ router.get('/', async (req, res, next) => {
 	}
 });
 
+// Get by ID
 router.get('/:id', async (req, res, next) => {
 	try {
-		/
 		const id = req.params.id;
 		const mood = await Mood.findById(id).populate({
             path: 'owner',
@@ -34,6 +34,7 @@ router.get('/:id', async (req, res, next) => {
 	}
 });
 
+// Create
 router.post('/', async (req, res, next) => {
 	try {
 	
@@ -45,6 +46,7 @@ router.post('/', async (req, res, next) => {
 	}
 });
 
+// update by delete
 router.put('/:id', async (req, res, next) => {
 	try {
 		const id = req.params.id;
@@ -56,6 +58,7 @@ router.put('/:id', async (req, res, next) => {
 	}
 });
 
+// remove entry
 router.delete('/:id', async (req, res, next) => {
 	try {
 		const id = req.params.id;

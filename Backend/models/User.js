@@ -4,8 +4,16 @@ const mongoose = require('../db/connection');
 
 
 const UserSchema = new mongoose.Schema({
-	username: String,
-	name: String,
+	username: {
+		type: String,
+		required: true,
+		unique: true,
+	},
+	firstname: {
+		type: String,
+		Required: true,
+	}, 
+	zipcode: Number,
 });
 
 

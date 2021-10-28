@@ -4,17 +4,19 @@ const Mood = require('../models/Mood');
 const User = require('../models/User');
 const moodseeds = require('./seeds.json');
 
-Mood.deleteMany({})
-	.then(() => User.deleteMany({}))
-	.then(() => {
-		return User.create({ email: 'fake@email.com', name: 'Fake Person' })
-			.then((user) =>
-				Moodseeds.map((mood) => ({ ...mood, owner: user._id }))
-			)
-			.then((Moods) => Mood.insertMany(Moods));
-	})
+User.deleteMany()
+	// Use insertMany and pass it the seed data
+	.then(() => User.insertMany(seedData))
+	// Log the successful results
 	.then(console.log)
+
+	.then(() => Todo.deleteMany())
+
+	.then(() => Todo.insertMany(seedTodoData))
+
+	.then(console.log)
+	// Log any errors if things didn't work
 	.catch(console.error)
-	.finally(() => {
-		process.exit();
-	});
+	// Use finally, so that this code will run whether or not
+	// things worked and close our connection to the database.
+	.finally(process.exit);
