@@ -5,7 +5,7 @@ const User = require('../models/User');
 
 router.get('/', async (req, res, next) => {
     try {
-        const users = await User.find();
+        const users = await User.find.populate();
         res.json(users)
     } catch (error) {
         next(error)
@@ -35,7 +35,6 @@ router.delete('/:id', async (req, res, next) => {
 	try {
 		const id = req.params.id;
 		const deletedOne = await User.findByIdAndDelete(id);
-		// res.sendStatus(204);
 		res.status(204).json(deletedOne);
 	} catch (error) {
 		next(error);
