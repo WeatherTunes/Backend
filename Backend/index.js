@@ -15,14 +15,9 @@ app.set('port', process.env.PORT || 8000);
 //=============================================================
 // Middleware (must always be before our routes)
 // ========================================================
-// `express.json` parses application/json request data and
-//  adds it to the request object as request.body
-app.use(express.json());
-// `express.urlencoded` parses x-ww-form-urlencoded request data and
-//  adds it to the request object as request.body
-app.use(express.urlencoded({ extended: true }));
 
-// cors enables other apps on URLs to make request.
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
 
@@ -31,14 +26,14 @@ app.use(cors());
 //===============================================================
 // Redirect
 app.get('/', (req, res) => {
-	res.redirect('/api/mood');
+	res.redirect('/mood');
 });
 /* START CONTROLLERS HERE */ 
 const moodController = require('./controllers/moodController')
-app.use('/api/mood', moodController);
+app.use('/mood', moodController);
 
 const usersController = require('./controllers/usersController')
-app.use('/api/users', usersController)
+app.use('/users', usersController)
 
 app.use((err, req, res, next) => {
 const statusCode = res.statusCode || 500;

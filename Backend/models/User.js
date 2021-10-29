@@ -6,9 +6,9 @@ const mongoose = require('../db/connection');
 const userSchema = new mongoose.Schema(
 {
 	email: {
-    type: String,
-    match: /.+\@.+\..+/,
-    unique: true
+   		type: String,
+    	match: /.+\@.+\..+/,
+    	unique: true,
   },
 	firstname: {
 		type: String,

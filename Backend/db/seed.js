@@ -2,7 +2,6 @@ const mongoose = require('./connection');
 
 const Mood = require('../models/Mood');
 const User = require('../models/User');
-const moodseeds = require('./seeds.json');
 
 User.deleteMany()
 	// Use insertMany and pass it the seed data

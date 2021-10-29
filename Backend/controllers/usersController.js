@@ -5,7 +5,7 @@ const User = require('../models/User');
 
 router.get('/', async (req, res, next) => {
     try {
-        const users = await User.find.populate();
+        const users = await User.find();
         res.json(users)
     } catch (error) {
         next(error)
@@ -22,7 +22,7 @@ router.get('/:id', async (req, res, next) => {
     }
 });
 
-router.post('/', async (req, res, next) => {
+router.post('/create', async (req, res, next) => {
 	try {
 		const user = await User.create(req.body);
 		res.status(201).json(user);
