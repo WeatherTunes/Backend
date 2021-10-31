@@ -1,14 +1,9 @@
-
-
 const mongoose = require('../db/connection');
 
-
-const UserSchema = new mongoose.Schema({
-	username: String,
-	name: String,
+const userSchema = new mongoose.Schema({
+	firstname: String,
+	zipcode: Number,
+	email: { type: String, match: /.+\@.+\..+/ },
 });
 
-
-const User = mongoose.model('User', UserSchema);
-
-module.exports = User;
+module.exports = mongoose.model('User', userSchema);

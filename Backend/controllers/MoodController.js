@@ -1,17 +1,14 @@
-
 const express = require('express');
 const router = express.Router();
 const Mood = require('../models/Mood');
 
 
 
-
+// Get all
 router.get('/', async (req, res, next) => {
 	try {
-		// 1. Get all the moods from the DB
 		const moods = await Mood.find().populate({
-			path: 'owner',
-			select: 'name',
+			path: 'Mooder'
 		});
 
 		res.json(moods);
@@ -20,33 +17,31 @@ router.get('/', async (req, res, next) => {
 	}
 });
 
+// Get by ID
 router.get('/:id', async (req, res, next) => {
 	try {
-		/
 		const id = req.params.id;
-		const mood = await Mood.findById(id).populate({
-            path: 'owner',
-            select: 'name email -_id',
-        });
+		const mood = await Mood.findById(id).populate("Mooder");
 		res.json(mood);
 	} catch (error) {
-		// 3. If there are errors, pass it on!
+
 		next(error);
 	}
 });
 
-// Create route: POST a new mood
+// Create
 router.post('/', async (req, res, next) => {
 	try {
-		// 1. Create a new mood
+	
 		const mood = await Mood.create(req.body);
-		// 2. Send back the mood to the user, with status 201 Created
+	
 		res.status(201).json(mood);
 	} catch (error) {
 		next(error);
 	}
 });
 
+// update by delete
 router.put('/:id', async (req, res, next) => {
 	try {
 		const id = req.params.id;
@@ -58,6 +53,7 @@ router.put('/:id', async (req, res, next) => {
 	}
 });
 
+// remove entry
 router.delete('/:id', async (req, res, next) => {
 	try {
 		const id = req.params.id;
