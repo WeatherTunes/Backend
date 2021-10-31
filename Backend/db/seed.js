@@ -9,9 +9,9 @@ User.deleteMany()
 	// Log the successful results
 	.then(console.log)
 
-	.then(() => Todo.deleteMany())
+	.then(() => User.deleteMany())
 
-	.then(() => Todo.insertMany(seedTodoData))
+	.then(() => User.insertMany(seedTodoData))
 
 	.then(console.log)
 	// Log any errors if things didn't work
