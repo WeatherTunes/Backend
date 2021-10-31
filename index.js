@@ -29,10 +29,10 @@ app.get('/', (req, res) => {
 	res.redirect('/mood');
 });
 /* START CONTROLLERS HERE */ 
-const moodController = require('./controllers/moodController')
+const moodController = require('./Backend/controllers/moodController')
 app.use('/mood', moodController);
 
-const usersController = require('./controllers/usersController')
+const usersController = require('./Backend/controllers/usersController')
 app.use('/users', usersController)
 
 app.use((err, req, res, next) => {
