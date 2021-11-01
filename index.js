@@ -26,7 +26,7 @@ app.use(cors());
 //===============================================================
 // Redirect
 app.get('/', (req, res) => {
-	res.redirect('/mood');
+	res.redirect('/api/mood');
 });
 /* START CONTROLLERS HERE */ 
 const moodController = require('./Backend/controllers/MoodController')
