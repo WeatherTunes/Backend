@@ -21,7 +21,7 @@ router.get('/', async (req, res, next) => {
 router.get('/:id', async (req, res, next) => {
 	try {
 		const id = req.params.id;
-		const mood = await Mood.findById(id).populate("Mooder");
+		const mood = await Mood.findById(id);
 		res.json(mood);
 	} catch (error) {
 
