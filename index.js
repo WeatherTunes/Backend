@@ -26,14 +26,16 @@ app.use(cors());
 //===============================================================
 // Redirect
 app.get('/', (req, res) => {
-	res.redirect('/api/mood');
+
+	res.redirect('/api/users');
 });
 /* START CONTROLLERS HERE */ 
-const moodController = require('./Backend/controllers/MoodController')
-app.use('/mood', moodController);
+const moodController = require('./controllers/moodController')
+app.use('/api/mood', moodController);
 
-const usersController = require('./Backend/controllers/usersController')
-app.use('/users', usersController)
+const usersController = require('./controllers/usersController')
+app.use('/api/users', usersController)
+
 
 app.use((err, req, res, next) => {
 const statusCode = res.statusCode || 500;
