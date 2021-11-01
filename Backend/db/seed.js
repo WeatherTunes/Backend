@@ -3,6 +3,8 @@ const mongoose = require('./connection');
 const Mood = require('../models/Mood');
 const User = require('../models/User');
 
+const seedData = require('./seeds.json');
+
 User.deleteMany()
 	// Use insertMany and pass it the seed data
 	.then(() => User.insertMany(seedData))
@@ -10,8 +12,6 @@ User.deleteMany()
 	.then(console.log)
 
 	.then(() => User.deleteMany())
-
-	.then(() => User.insertMany(seedTodoData))
 
 	.then(console.log)
 	// Log any errors if things didn't work
