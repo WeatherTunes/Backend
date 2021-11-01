@@ -1,7 +1,9 @@
+
 const mongoose = require('./connection');
 
 const Mood = require('../models/Mood');
 const User = require('../models/User');
+
 
 User.deleteMany()
 	// Use insertMany and pass it the seed data
@@ -9,9 +11,11 @@ User.deleteMany()
 	// Log the successful results
 	.then(console.log)
 
+
 	.then(() => Todo.deleteMany())
 
 	.then(() => Todo.insertMany(seedTodoData))
+
 
 	.then(console.log)
 	// Log any errors if things didn't work
