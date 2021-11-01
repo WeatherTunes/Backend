@@ -1,6 +1,3 @@
-const mongoose = require('./connection');
-
-const Mood = require('../models/Mood');
 const User = require('../models/User');
 
 const seedData = require('./seeds.json');
