@@ -3,7 +3,12 @@ require('dotenv').config();
 const mongoose = require('mongoose');
 
 
-const mongoURI = process.env.DATABASE_URL;
+const mongoURI = "";
+if (process.env.NODE_ENV === 'production') {
+	mongoURI = process.env.DB_URL;
+} else {
+	mongoURI = 'mongodb://localhost/8000';
+}
 const db = mongoose.connection;
 
 

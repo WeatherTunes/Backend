@@ -6,9 +6,6 @@ const MoodSchema = new mongoose.Schema({
     mood: String,
     date: { type: Date, default: Date.now },
     Mooder: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
-    
-    
-
 });
 
 
